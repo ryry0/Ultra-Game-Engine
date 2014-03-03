@@ -1,3 +1,14 @@
 Extra double super alpha version
 of the ULTRA game
 *name subject to change*
+
+TODO:
+
+1) Write window manager code for:
+	-Windows
+	-Linux
+2) Put simple opengl implementation of sidescrolling schmup.
+	-Physics
+	-Mechanics
+	-Texturing
+3) Determine how audio will be handled.
