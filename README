@@ -7,8 +7,12 @@ TODO:
 1) Write window manager code for:
 	-Windows
 	-Linux
-2) Put simple opengl implementation of sidescrolling schmup.
+	-> Decided to use SDL, since it powers many popular indie games 
+	(Amnesia, FTL, Don't Starve, and Team Fortress)
+	For windowing, threads, audio, network.
+	Gives me a more portable way of cross platform implementation, 
+	instead of having to write audio handling from scratch.
+2) Make simple opengl implementation of sidescrolling schmup.
 	-Physics
 	-Mechanics
 	-Texturing
-3) Determine how audio will be handled.
