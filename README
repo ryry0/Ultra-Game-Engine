@@ -2,8 +2,28 @@ Extra double super alpha version
 of the ULTRA game
 *name subject to change*
 
-TODO:
+To compile on windows:
 
+Download the SDL 2.0.1 development libraries for MINGW/VISC++ at
+http://www.libsdl.org/download-2.0.php
+
+If using Code::Blocks:
+Copy the folder to C: (that's the only way I know how to make it work)
+Go Project -> Properties... -> Project's Build Options ... ->
+	Search Directories -> Compiler
+	Add your path, e. g.: 
+	C:\SDL..\..\i686-w64-mingw32\include
+
+	Then go to Linker and add
+	C:\SDL..\..\i686-w64-mingw32\lib
+
+Go to Linker settings tab and add:
+	-lmingw32 -lSDL2main -lSDL2
+
+Tutorial can be referenced here:
+http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/codeblocks/index.php
+
+TODO:
 1) Write window manager code for:
 	-Windows
 	-Linux
