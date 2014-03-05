@@ -26,6 +26,22 @@ Copy C:\SDL..\..\i686-w64-mingw32\bin\SDL2.dll to the executable directory:
 Tutorial can be referenced here:
 http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/codeblocks/index.php
 
+To install SDL_image libraries:
+	Download the development libraries for MinGW from
+	www.libsdl.org/projects/SDL_image/
+
+Merge the i686 folder in this tree with the directory specified in the above
+instructions.
+
+Copy the *.dll files from:
+	C:\SDL..\..\i686-w64-mingw32\bin\*.dll 
+	to the executable directory: bin
+
+To install further SDL Libraries, 
+	1) Download the development libraries.
+	2) Merge with Library tree.
+	3) Copy *.dll's to local bin directory.
+
 TODO:
 1) Write window manager code for:
 	-Windows
