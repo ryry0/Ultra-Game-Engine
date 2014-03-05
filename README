@@ -20,6 +20,9 @@ Go Project -> Properties... -> Project's Build Options ... ->
 Go to Linker settings tab and add:
 	-lmingw32 -lSDL2main -lSDL2
 
+Copy C:\SDL..\..\i686-w64-mingw32\bin\SDL2.dll to the executable directory:
+	bin
+
 Tutorial can be referenced here:
 http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/codeblocks/index.php
 
