@@ -40,6 +40,7 @@
 			<Add option="-lmingw32" />
 			<Add option="-lSDL2main" />
 			<Add option="-lSDL2" />
+			<Add option="-lSDL2_image" />
 			<Add directory="C:/SDL2-2.0.1/i686-w64-mingw32/lib" />
 		</Linker>
 		<Unit filename="src/main.cpp" />
