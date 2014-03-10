@@ -34,15 +34,20 @@
 		<Compiler>
 			<Add option="-std=c++11" />
 			<Add option="-Wall" />
-			<Add directory="C:/SDL2-2.0.1/i686-w64-mingw32/include" />
+			<Add option="-Iinc/" />
+			<Add directory="ext/SDL/include" />
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32" />
 			<Add option="-lSDL2main" />
 			<Add option="-lSDL2" />
 			<Add option="-lSDL2_image" />
-			<Add directory="C:/SDL2-2.0.1/i686-w64-mingw32/lib" />
+			<Add option="-lopengl32" />
+			<Add directory="ext/SDL/lib" />
 		</Linker>
+		<Unit filename="inc/engine/gameengine.h" />
+		<Unit filename="inc/engine/gamestate.h" />
+		<Unit filename="src/engine/gameengine.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
