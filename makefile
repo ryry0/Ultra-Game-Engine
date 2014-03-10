@@ -1,36 +1,47 @@
 SOURCE_EXT=cpp
 OBJ_EXT=o
 HEAD_EXT=h
-OBJ_HEAD_EXT=gch
+
 BIN_PATH=bin
 SRC_PATH=src
 OBJ_PATH=obj
 INC_PATH=inc
+
 CC=g++
+
 CFLAGS=-c -I$(INC_PATH) -std=c++11
+
 LDFLAGS= -lSDL2 -lSDL2_image -lSDL2_ttf -lGL
 DFLAGS=-DDEBUG -ggdb -g3 -Wall
+
 DEFAULT_DEBUG=debug
 
 EXECUTABLE_NAME=Game.x
 EXECUTABLE=$(addprefix $(BIN_PATH)/,$(EXECUTABLE_NAME))
 
-SOURCE_NAMES=$(shell ls $(SRC_PATH))
-SOURCES=$(addprefix $(SRC_PATH)/,$(SOURCE_NAMES))
-OBJECT_NAMES=$(SOURCE_NAMES:.$(SOURCE_EXT)=.$(OBJ_EXT))
-OBJECTS=$(addprefix $(OBJ_PATH)/,$(OBJECT_NAMES))
+MODULES   := engine 
+SRC_DIR   := $(addprefix $(SRC_PATH)/,$(MODULES))
+SRC_DIR   += $(SRC_PATH)
+BUILD_DIR := $(addprefix $(OBJ_PATH)/,$(MODULES))
 
+SRC       := $(foreach sdir,$(SRC_DIR),$(wildcard $(sdir)/*.cpp))
+OBJ       := $(patsubst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o,$(SRC))
+INCLUDES  := $(addprefix -I,$(SRC_DIR))
 .PHONY: clean cleanall run test debug
 
-all: $(DEFAULT_DEBUG) $(SOURCES) $(EXECUTABLE) 
+vpath %.cpp $(SRC_DIR)
+
+
+all: checkdirs $(DEFAULT_DEBUG) $(EXECUTABLE) 
 
 debug: CFLAGS += $(DFLAGS)
-debug: $(SOURCES) $(EXECUTABLE)
+debug: $(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-$(OBJ_PATH)/%.$(OBJ_EXT): $(SRC_PATH)/%.$(SOURCE_EXT) $(wildcard $(INC_PATH)/*.$(HEAD_EXT))
+$(EXECUTABLE): $(OBJ)
+	$(CC) $(LDFLAGS) $(OBJ) -o $@
+
+$(BUILD_DIR)/%.$(OBJ_EXT): %.$(SOURCE_EXT) 
 	$(CC) $(CFLAGS) $< -o $@
 
 
@@ -43,8 +54,12 @@ re: proper all
 
 redo: proper debug
 
+checkdirs: $(BUILD_DIR)
+
+$(BUILD_DIR):
+	mkdir -p $@
 clean:
-	rm -f $(wildcard $(OBJ_PATH)/*.$(OBJ_EXT)) 
+	rm -rf $(BUILD_DIR)
 
 run:
 	cd $(BIN_PATH) && ./$(EXECUTABLE_NAME)
