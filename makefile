@@ -11,7 +11,7 @@ CC=g++
 
 CFLAGS=-c -I$(INC_PATH) -std=c++11
 
-LDFLAGS= -lSDL2 -lSDL2_image -lSDL2_ttf -lGL
+LDFLAGS= -lSDL2 -lSDL2_image -lSDL2_ttf -lGL -lGLEW
 DFLAGS=-DDEBUG -ggdb -g3 -Wall
 
 DEFAULT_DEBUG=debug
