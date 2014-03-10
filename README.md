@@ -1,21 +1,21 @@
 # Ultra Game 
-alpha version of the ULTRA game
+Alpha version of the ULTRA game
 *name subject to change*
 
 ## To compile on Windows:
 
 Download the SDL 2.0.1 development libraries for MINGW/VISC++ at
-http://www.libsdl.org/download-2.0.php
+[sdl.org](http://www.libsdl.org/download-2.0.php)
 
 If using Code::Blocks:
 Copy the directories `{bin, include, lib}` in `SDL..\..\i686-w64-mingw32` to 
 	`ext\SDL\{bin, include, lib}`
 
 Go to `Project -> Properties... -> Project's Build Options ... -> Search Directories -> Compiler`
-	Add your path, e. g.: 
+Add your path, e. g.: 
 	`ext\SDL\include`
 
-	Then go to `Linker` and add
+Then go to `Linker` and add
 	`ext\SDL\lib`
 
 Go to Linker settings tab and add:
@@ -24,7 +24,7 @@ Go to Linker settings tab and add:
 Copy `ext\SDL\bin\SDL2.dll` to the executable directory: `bin`
 
 Tutorial can be referenced here:
-[lazyfoo] (http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/codeblocks/index.php)
+[lazyfoo](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/codeblocks/index.php)
 
 To install SDL_image libraries:
 	Download the development libraries for MinGW from
@@ -40,12 +40,14 @@ Copy the `*.dll` files from:
 	to the executable directory: `bin`
 
 To install further SDL Libraries, 
-	1) Download the development libraries.
-	2) Merge with Library tree.
-	3) Copy `*.dll`'s to local bin directory.
+
+	1. Download the development libraries.
+	2. Merge with Library tree.
+	3. Copy `*.dll`'s to local bin directory.
 
 TODO:
-1) Write window manager code for:
+
+1. Write window manager code for:
 	-Windows
 	-Linux
 	-> Decided to use SDL, since it powers many popular indie games 
@@ -53,7 +55,8 @@ TODO:
 	For windowing, threads, audio, network.
 	Gives me a more portable way of cross platform implementation, 
 	instead of having to write audio handling from scratch.
-2) Make simple opengl implementation of sidescrolling schmup.
+
+2. Make simple opengl implementation of sidescrolling schmup.
 	-Physics
 	-Mechanics
 	-Texturing
