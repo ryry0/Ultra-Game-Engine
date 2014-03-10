@@ -13,21 +13,21 @@ Alpha version of the ULTRA game
 
 	`SDL..\..\i686-w64-mingw32` to 
 
-	ext\SDL\{bin, include, lib}
+	`ext\SDL\{bin, include, lib}`
 
 3. Go to `Project -> Properties... -> Project's Build Options ... -> Search Directories -> Compiler`
 
 	Add your path, e. g.: 
 
-	ext\SDL\include
+	`ext\SDL\include`
 
 4. Then go to the `Linker` Search Directories tab and add
 
-	ext\SDL\lib
+	`ext\SDL\lib`
 
 5. Go to Linker settings tab and add:
 
-	-lmingw32 -lSDL2main -lSDL2 -lopengl32
+	`-lmingw32 -lSDL2main -lSDL2 -lopengl32`
 
 6. Copy `ext\SDL\bin\SDL2.dll` to the executable directory: `bin`
 
@@ -41,10 +41,8 @@ Tutorial can be referenced here:
 instructions.
 
 3. Copy the `*.dll` files from:
-```
-ext\SDL\bin\*.dll 
-```
-to the executable directory: `bin`
+	`ext\SDL\bin\*.dll`
+	to the executable directory: `bin`
 
 ## To install further SDL Libraries, 
 
@@ -67,6 +65,7 @@ TODO:
 
 	Gives me a more portable way of cross platform implementation, 
 	instead of having to write audio handling from scratch.
+
 
 2. Make simple opengl implementation of sidescrolling schmup.
 
