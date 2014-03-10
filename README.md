@@ -1,46 +1,48 @@
-Extra double super alpha version
-of the ULTRA game
+# Ultra Game 
+alpha version of the ULTRA game
 *name subject to change*
 
-To compile on windows:
+## To compile on Windows:
 
 Download the SDL 2.0.1 development libraries for MINGW/VISC++ at
 http://www.libsdl.org/download-2.0.php
 
 If using Code::Blocks:
-Copy the folder to C: (that's the only way I know how to make it work)
-Go Project -> Properties... -> Project's Build Options ... ->
-	Search Directories -> Compiler
-	Add your path, e. g.: 
-	C:\SDL..\..\i686-w64-mingw32\include
+Copy the directories `{bin, include, lib}` in `SDL..\..\i686-w64-mingw32` to 
+	`ext\SDL\{bin, include, lib}`
 
-	Then go to Linker and add
-	C:\SDL..\..\i686-w64-mingw32\lib
+Go to `Project -> Properties... -> Project's Build Options ... -> Search Directories -> Compiler`
+	Add your path, e. g.: 
+	`ext\SDL\include`
+
+	Then go to `Linker` and add
+	`ext\SDL\lib`
 
 Go to Linker settings tab and add:
-	-lmingw32 -lSDL2main -lSDL2
+	 `-lmingw32 -lSDL2main -lSDL2 -lopengl32`
 
-Copy C:\SDL..\..\i686-w64-mingw32\bin\SDL2.dll to the executable directory:
-	bin
+Copy `ext\SDL\bin\SDL2.dll` to the executable directory: `bin`
 
 Tutorial can be referenced here:
-http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/codeblocks/index.php
+[lazyfoo] (http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/codeblocks/index.php)
 
 To install SDL_image libraries:
 	Download the development libraries for MinGW from
-	www.libsdl.org/projects/SDL_image/
+	[sdl.org] (www.libsdl.org/projects/SDL_image/)
 
-Merge the i686 folder in this tree with the directory specified in the above
+Merge the i686 subfolders in this tree with the directory specified in the above
 instructions.
 
-Copy the *.dll files from:
-	C:\SDL..\..\i686-w64-mingw32\bin\*.dll 
-	to the executable directory: bin
+Copy the `*.dll` files from:
+```
+	ext\SDL\bin\*.dll 
+```
+	to the executable directory: `bin`
 
 To install further SDL Libraries, 
 	1) Download the development libraries.
 	2) Merge with Library tree.
-	3) Copy *.dll's to local bin directory.
+	3) Copy `*.dll`'s to local bin directory.
 
 TODO:
 1) Write window manager code for:
