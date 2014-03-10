@@ -44,6 +44,8 @@ $(EXECUTABLE): $(OBJ)
 $(BUILD_DIR)/%.$(OBJ_EXT): %.$(SOURCE_EXT) 
 	$(CC) $(CFLAGS) $< -o $@
 
+$(OBJ_PATH)/%.$(OBJ_EXT): %.$(SOURCE_EXT) 
+	$(CC) $(CFLAGS) $< -o $@
 
 cleanall: clean
 	rm -f $(EXECUTABLE)
@@ -65,4 +67,5 @@ run:
 	cd $(BIN_PATH) && ./$(EXECUTABLE_NAME)
 
 test:
-	cd $(BIN_PATH) && gdb -tui $(EXECUTABLE_NAME)
+	@echo $(BUILD_DIR)
+#	cd $(BIN_PATH) && gdb -tui $(EXECUTABLE_NAME)
