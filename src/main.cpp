@@ -10,7 +10,7 @@
 #include <SDL2/SDL.h>
 
 //program includes
-#include <gameengine.h>
+#include <engine/gameengine.h>
 
 int main(int argc, char ** argv)
 {

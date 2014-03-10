@@ -1,7 +1,7 @@
 #ifndef GAME_STATE_H_
 #define GAME_STATE_H_
 
-#include <gameengine.h>
+#include <engine/gameengine.h>
 
 class GameState
 {
