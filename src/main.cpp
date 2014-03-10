@@ -7,6 +7,8 @@
 #include <iomanip>
 
 //external library includes
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include <SDL2/SDL.h>
 
 //program includes

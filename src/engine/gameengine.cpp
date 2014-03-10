@@ -1,8 +1,11 @@
-#include <engine/gameengine.h>
-#include <engine/gamestate.h>
+#include <iostream>
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
+#include <engine/gameengine.h>
+#include <engine/gamestate.h>
 const char * title = "Ultra Game";
 
 /*
@@ -21,6 +24,9 @@ int GameEngine::Init()
                               SDL_WINDOW_OPENGL);
 
   context_ = SDL_GL_CreateContext(window_);
+  glewExperimental = GL_TRUE;
+  glewInit();
+
   return 0;
 }
 
