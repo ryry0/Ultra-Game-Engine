@@ -25,7 +25,7 @@ int GameEngine::Init()
 
   context_ = SDL_GL_CreateContext(window_);
   glewExperimental = GL_TRUE;
-  glewInit();
+  CheckGLSupport(glewInit());
 
   return 0;
 }
@@ -112,3 +112,37 @@ void GameEngine::Cleanup()
   SDL_DestroyWindow(window_);
   SDL_Quit();
 }
+
+/*
+ * Checks whether or not GLEW initialized correctly.
+ * Also checks OpenGL version, shader/array/buffer support.
+ * TODO GOOD LOGGING DESIGN
+ */
+void GameEngine::CheckGLSupport(GLenum error)
+{
+  if (error != GLEW_OK)
+  {
+    std::cout << "GLEW initialization error: " << glewGetErrorString(error)
+      << "\n";
+  }
+
+  if (GLEW_ARB_vertex_shader && GLEW_ARB_fragment_shader)
+    std::cout << "OpenGL Shaders Supported.\n";
+  else
+    std::cout << "OpenGL Shaders Not Supported.\n";
+
+  if (GLEW_ARB_vertex_array_object)
+    std::cout << "OpenGL Vertex Array Objects Supported.\n";
+  else
+    std::cout << "OpenGL Vertex Array Objects Not Supported.\n";
+
+  if (GLEW_ARB_vertex_buffer_object)
+    std::cout << "OpenGL Vertex Buffer Objects Supported.\n";
+  else
+    std::cout << "OpenGL Vertex Buffer Objects Not Supported.\n";
+
+  std::cout << "Shading Language version is: "
+    << glGetString(GL_SHADING_LANGUAGE_VERSION_ARB) << "\n";
+  std::cout << "OpenGL version: " << glGetString(GL_VERSION) << "\n";
+}
+

@@ -42,6 +42,8 @@ class GameEngine
     void Quit     () {running_ = false;}
 
   private:
+    void CheckGLSupport(GLenum error);
+  private:
     bool running_;
     SDL_Window *window_;
     SDL_GLContext context_;
