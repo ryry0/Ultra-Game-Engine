@@ -62,10 +62,10 @@ $(BUILD_DIR):
 	mkdir -p $@
 clean:
 	rm -rf $(BUILD_DIR)
+	rm -f $(wildcard $(OBJ_PATH)/*.$(OBJ_EXT))
 
 run:
 	cd $(BIN_PATH) && ./$(EXECUTABLE_NAME)
 
 test:
-	@echo $(BUILD_DIR)
-#	cd $(BIN_PATH) && gdb -tui $(EXECUTABLE_NAME)
+	cd $(BIN_PATH) && gdb -tui $(EXECUTABLE_NAME)
