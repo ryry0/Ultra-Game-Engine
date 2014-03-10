@@ -36,14 +36,17 @@
 			<Add option="-Wall" />
 			<Add option="-Iinc/" />
 			<Add directory="ext/SDL/include" />
+			<Add directory="ext/glew/include" />
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32" />
 			<Add option="-lSDL2main" />
 			<Add option="-lSDL2" />
 			<Add option="-lSDL2_image" />
+			<Add option="-lglew32s" />
 			<Add option="-lopengl32" />
 			<Add directory="ext/SDL/lib" />
+			<Add directory="ext/glew/lib/Release/Win32" />
 		</Linker>
 		<Unit filename="inc/engine/gameengine.h" />
 		<Unit filename="inc/engine/gamestate.h" />
