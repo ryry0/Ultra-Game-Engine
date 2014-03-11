@@ -97,6 +97,7 @@ void GameEngine::Render()
 {
   state_stack_.top()->Render(this);
 }
+
 /*
  * Cleanup makes sure all the states, contexts, and windows are deleted
  */

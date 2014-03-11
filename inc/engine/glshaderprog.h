@@ -44,7 +44,8 @@ class GLShaderProgram
     void operator()         () { BindProgram(); }
 
   private:
-    bool LoadFromFile (const std::string &file_name, std::string &shader_source);
+    bool LoadFromFile       (const std::string &file_name,
+                             std::string &shader_source);
     GLuint vertex_shader_, fragment_shader_, program_;
 };
 #endif

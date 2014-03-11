@@ -28,7 +28,7 @@ class IntroMenuState : public GameState
     void Update       (GameEngine *game);
     void Render       (GameEngine *game);
 
-    static IntroMenuState * Instance()
+    static IntroMenuState* Instance()
     {return &IntroMenu_;}
 
   protected:
@@ -36,6 +36,6 @@ class IntroMenuState : public GameState
 
   private:
     static IntroMenuState IntroMenu_;
-    Gluint vertex_buffer_obj_;
+    GLuint vertex_buffer_obj_;
 };
 #endif
