@@ -3,6 +3,8 @@
 
 #include <engine/gameengine.h>
 
+namespace engine
+{
 class GameState
 {
   public:
@@ -21,5 +23,5 @@ class GameState
   private:
     GameState() {}
 };
-
+}
 #endif

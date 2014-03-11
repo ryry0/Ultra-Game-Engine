@@ -21,6 +21,8 @@
  *  Render:       Calls the GameState Implementation of Render()
  *  HandleEvents: Calls the GameState Implementation of HandleEvents()
  */
+namespace engine
+{
 class GameState;
 
 class GameEngine
@@ -49,4 +51,5 @@ class GameEngine
     SDL_GLContext context_;
     std::stack<GameState*> state_stack_;
 };
+}
 #endif

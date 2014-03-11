@@ -19,7 +19,7 @@ int main(int argc, char ** argv)
   int return_value = 0;
 
   //Create the game context
-  GameEngine game;
+  engine::GameEngine game;
 
   //start the game
   return_value = game.Init();

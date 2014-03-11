@@ -6,6 +6,8 @@
 
 #include <engine/gameengine.h>
 #include <engine/gamestate.h>
+namespace engine
+{
 const char * title = "Ultra Game";
 
 /*
@@ -145,4 +147,4 @@ void GameEngine::CheckGLSupport(GLenum error)
     << glGetString(GL_SHADING_LANGUAGE_VERSION_ARB) << "\n";
   std::cout << "OpenGL version: " << glGetString(GL_VERSION) << "\n";
 }
-
+}
