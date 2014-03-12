@@ -3,6 +3,7 @@
 
 #include <GL/glew.h>
 #include <string>
+#include <map>
 /*
  * Description:
  *  This class represents a fully compiled and linked shader program object.
@@ -17,6 +18,10 @@
  *    (Activates *this current shader program.)
  *  UnbindProgram:    Unbinds the program from the OpenGL state machine.
  *    (Deactivates *this shader program.)
+ *  AddAttribute:   adds an attribute to the shader program, it returns the
+ *    handle to the location of the attribute.
+ *  AddUniform:   adds an uniform to the shader program, it returns the
+ *    handle to the location of the uniform.
  */
 
 class GLShaderProgram
@@ -34,18 +39,28 @@ class GLShaderProgram
     bool CreateProgram      (const std::string &vertex_source,
                              const std::string &fragment_source);
 
-    void BindProgram        () { glUseProgram(program_); }
+    void BindProgram        () { glUseProgram(program_id_); }
     void UnbindProgram      () { glUseProgram(0); }
 
-    GLuint GetFragmentShader() { return fragment_shader_; }
-    GLuint GetVertexShader  () { return vertex_shader_; }
-    GLuint GetProgram       () { return program_; }
+    GLuint GetFragmentShader() const { return fragment_shader_id_; }
+    GLuint GetVertexShader  () const { return vertex_shader_id_; }
+    GLuint GetProgram       () const { return program_id_; }
+    GLuint GetAttribute     (const std::string attribute);
+    GLuint GetUniform       (const std::string uniform);
+
+    GLuint AddAttribute     (const std::string attribute);
+    GLuint AddUniform       (const std::string uniform);
 
     void operator()         () { BindProgram(); }
 
   private:
     bool LoadFromFile       (const std::string &file_name,
                              std::string &shader_source);
-    GLuint vertex_shader_, fragment_shader_, program_;
+
+    GLuint vertex_shader_id_,
+           fragment_shader_id_,
+           program_id_;
+    std::map<std::string, GLint> attribute_location_list_,
+                                 uniform_location_list_;
 };
 #endif
