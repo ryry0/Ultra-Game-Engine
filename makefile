@@ -19,10 +19,11 @@ DEFAULT_DEBUG=debug
 EXECUTABLE_NAME=Game.x
 EXECUTABLE=$(addprefix $(BIN_PATH)/,$(EXECUTABLE_NAME))
 
-MODULES   := engine 
+MODULES   := engine menus
 SRC_DIR   := $(addprefix $(SRC_PATH)/,$(MODULES))
 SRC_DIR   += $(SRC_PATH)
 BUILD_DIR := $(addprefix $(OBJ_PATH)/,$(MODULES))
+OBJBUILD_DIR := $(addsuffix /%.$(OBJ_EXT),$(BUILD_DIR))
 
 SRC       := $(foreach sdir,$(SRC_DIR),$(wildcard $(sdir)/*.cpp))
 OBJ       := $(patsubst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o,$(SRC))
@@ -41,7 +42,7 @@ debug: $(EXECUTABLE)
 $(EXECUTABLE): $(OBJ)
 	$(CC) $(LDFLAGS) $(OBJ) -o $@
 
-$(BUILD_DIR)/%.$(OBJ_EXT): %.$(SOURCE_EXT) 
+$(OBJBUILD_DIR): %.$(SOURCE_EXT) 
 	$(CC) $(CFLAGS) $< -o $@
 
 $(OBJ_PATH)/%.$(OBJ_EXT): %.$(SOURCE_EXT) 
@@ -69,3 +70,9 @@ run:
 
 test:
 	cd $(BIN_PATH) && gdb -tui $(EXECUTABLE_NAME)
+
+list:
+	@echo source directories: $(SRC_DIR)
+	@echo build  directories: $(BUILD_DIR)
+	@echo build  targets:     $(OBJBUILD_DIR)
+	@echo source files:       $(SRC)
