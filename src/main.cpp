@@ -13,6 +13,7 @@
 
 //program includes
 #include <engine/gameengine.h>
+#include <menus/intromenustate.h>
 
 int main(int argc, char ** argv)
 {
@@ -23,6 +24,8 @@ int main(int argc, char ** argv)
 
   //start the game
   return_value = game.Init();
+
+  game.ChangeState( IntroMenuState::Instance() );
 
   //main loop
   while (game.IsRunning())
