@@ -37,6 +37,8 @@ class GameEngine
     void Update       ();
     void Render       ();
 
+    SDL_Window* GetWindow() {return window_;}
+
     bool IsRunning()  {return running_;}
 
     void Quit     () {running_ = false;}
