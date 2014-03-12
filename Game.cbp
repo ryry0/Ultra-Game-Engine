@@ -50,8 +50,17 @@
 		</Linker>
 		<Unit filename="inc/engine/gameengine.h" />
 		<Unit filename="inc/engine/gamestate.h" />
+		<Unit filename="inc/engine/glshaderprog.h" />
+		<Unit filename="inc/menus/intromenustate.h" />
+		<Unit filename="shaders/fragment.fs" />
+		<Unit filename="shaders/fragment120.fs" />
+		<Unit filename="shaders/vertex.vs" />
+		<Unit filename="shaders/vertex120.fs" />
 		<Unit filename="src/engine/gameengine.cpp" />
+		<Unit filename="src/engine/glshaderprog.cpp" />
+		<Unit filename="src/engine/intromenustate.cpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/menus/intromenustate.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

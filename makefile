@@ -73,6 +73,6 @@ test:
 
 list:
 	@echo source directories: $(SRC_DIR)
+	@echo source files:       $(SRC)
 	@echo build  directories: $(BUILD_DIR)
 	@echo build  targets:     $(OBJBUILD_DIR)
-	@echo source files:       $(SRC)
