@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <engine/logger.h>
 
 //default ctor
 GLShaderProgram::GLShaderProgram()
@@ -42,10 +43,16 @@ bool GLShaderProgram::CreateProgFromFile(const std::string &vertex_file_name,
   std::string vertex_source, fragment_source;
 
   if (LoadFromFile(vertex_file_name, vertex_source) == false)
+  {
+    LOG(LOG_ERROR) << "Could not open vertex shader: " << vertex_file_name;
     return false;
+  }
 
   if (LoadFromFile(fragment_file_name, fragment_source) == false)
+  {
+    LOG(LOG_ERROR) << "Could not open fragment shader: " << fragment_file_name;
     return false;
+  }
 
   return CreateProgram(vertex_source, fragment_source);
 }
@@ -82,7 +89,7 @@ bool GLShaderProgram::CreateProgram(const std::string &vertex_source,
   if(status != GL_TRUE)
   {
     glGetShaderInfoLog(vertex_shader_id_, 512, NULL, buffer);
-    std::cout << buffer;
+    LOG(LOG_ERROR) << "Vertex shader compilation error:\n" << buffer;
     return false;
   }
 
@@ -90,7 +97,7 @@ bool GLShaderProgram::CreateProgram(const std::string &vertex_source,
   if(status != GL_TRUE)
   {
     glGetShaderInfoLog(vertex_shader_id_, 512, NULL, buffer);
-    std::cout << buffer;
+    LOG(LOG_ERROR) << "Fragment shader compilation error:\n" << buffer;
     return false;
   }
 
@@ -100,7 +107,10 @@ bool GLShaderProgram::CreateProgram(const std::string &vertex_source,
   glLinkProgram(program_id_);
   glGetProgramiv(program_id_, GL_LINK_STATUS, &status);
   if (status != GL_TRUE)
+  {
+    LOG(LOG_ERROR) << "Could not link shader program.";
     return false;
+  }
 
   return true;
 }
@@ -136,7 +146,9 @@ GLuint GLShaderProgram::GetAttribute(const std::string attribute)
 {
   //make sure that it exists, otherwise log.
   if(attribute_location_list_.find(attribute) == attribute_location_list_.end())
-    std::cout << "Could not find string attribute\n";
+  {
+    LOG(LOG_ERROR) << "Could not find string attribute: " << attribute;
+  }
 
   return attribute_location_list_[attribute];
 }
@@ -149,7 +161,9 @@ GLuint GLShaderProgram::GetUniform(const std::string uniform)
 {
   //make sure that it exists, otherwise log.
   if(uniform_location_list_.find(uniform) == uniform_location_list_.end())
-    std::cout << "Could not find string attribute\n";
+  {
+    LOG(LOG_ERROR) << "Could not find string uniform: " << uniform;
+  }
 
   return uniform_location_list_[uniform];
 }
@@ -162,7 +176,9 @@ GLuint GLShaderProgram::AddAttribute(const std::string attribute)
   attribute_location_list_[attribute] = glGetAttribLocation(program_id_,
                                                             attribute.c_str());
   if (attribute_location_list_[attribute] == -1)
-    std::cout << "Could not locate attribute\n";
+  {
+    LOG(LOG_ERROR) << "Could not locate attribute in shader";
+  }
 
   return attribute_location_list_[attribute];
 }
@@ -175,7 +191,9 @@ GLuint GLShaderProgram::AddUniform(const std::string uniform)
   uniform_location_list_[uniform] = glGetUniformLocation(program_id_,
                                                          uniform.c_str());
   if (uniform_location_list_[uniform] == -1)
-    std::cout << "Could not locate uniform\n";
+  {
+    LOG(LOG_ERROR) << "Could not locate uniform in shader";
+  }
 
   return uniform_location_list_[uniform];
 }
