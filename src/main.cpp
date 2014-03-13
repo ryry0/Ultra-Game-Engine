@@ -25,14 +25,17 @@ int main(int argc, char ** argv)
   //start the game
   return_value = game.Init();
 
-  game.ChangeState( IntroMenuState::Instance() );
-
-  //main loop
-  while (game.IsRunning())
+  if (return_value == 0)
   {
-    game.HandleEvents();
-    game.Update();
-    game.Render();
+    game.ChangeState( IntroMenuState::Instance() );
+
+    //main loop
+    while (game.IsRunning())
+    {
+      game.HandleEvents();
+      game.Update();
+      game.Render();
+    }
   }
 
   //delete the game
