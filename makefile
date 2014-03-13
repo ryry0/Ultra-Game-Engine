@@ -69,7 +69,7 @@ run:
 	cd $(BIN_PATH) && ./$(EXECUTABLE_NAME)
 
 test:
-	cd $(BIN_PATH) && gdb -tui $(EXECUTABLE_NAME)
+	cd $(BIN_PATH) && gdb -tui -q $(EXECUTABLE_NAME)
 
 list:
 	@echo source directories: $(SRC_DIR)

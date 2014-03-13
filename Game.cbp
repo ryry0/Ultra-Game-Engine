@@ -58,7 +58,6 @@
 		<Unit filename="shaders/vertex120.fs" />
 		<Unit filename="src/engine/gameengine.cpp" />
 		<Unit filename="src/engine/glshaderprog.cpp" />
-		<Unit filename="src/engine/intromenustate.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/menus/intromenustate.cpp" />
 		<Extensions>
