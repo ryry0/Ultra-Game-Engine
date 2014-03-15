@@ -16,6 +16,7 @@
  *  It is associated with one font, and it's color, and is
  *  capable of rendering any string to a texture, and binding the texture.
  *  Once RenderTexture is called, any quad drawn after will contain the text.
+ *  Restrict font updates to 0.2 seconds for efficiency.
  *  Functions:
  *    Overloaded Constructor: Calls LoadFontFile.
  *    LoadFontFile: Takes the path to the font and the point size of the font
@@ -25,6 +26,8 @@
  *    Render: Binds the vertex array object that recorded how the texture was
  *      set up.
  */
+namespace font
+{
 class FontRenderer
 {
   public:
@@ -51,5 +54,5 @@ class FontRenderer
     int width_;
     int height_;
 };
-
+}
 #endif

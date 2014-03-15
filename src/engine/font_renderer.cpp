@@ -7,6 +7,9 @@
 #include <engine/font_renderer.h>
 #include <engine/logger.h>
 
+namespace font
+{
+
 FontRenderer::FontRenderer()
 {
   glGenTextures(1, &font_texture_);
@@ -64,7 +67,7 @@ void FontRenderer::RenderToGLTexture(const std::string text,
   glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, font_surface->w, font_surface->h,
       0, GL_BGRA, GL_UNSIGNED_BYTE, font_surface->pixels);
-  glBindTexture(GL_TEXTURE_2D, 0);
+  //glBindTexture(GL_TEXTURE_2D, NULL);
 
   SDL_FreeSurface(font_surface);
 }
@@ -77,3 +80,4 @@ void FontRenderer::RenderTexture()
 {
     glBindTexture(GL_TEXTURE_2D, font_texture_);
 }
+} //namespace font
