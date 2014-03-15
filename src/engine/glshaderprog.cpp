@@ -142,13 +142,11 @@ bool GLShaderProgram::LoadFromFile( const std::string &file_name,
  * Returns the attribute location, makes sure it can be found first,
  * and logs it.
  */
-GLuint GLShaderProgram::GetAttribute(const std::string attribute)
+GLint GLShaderProgram::GetAttribute(const std::string attribute)
 {
   //make sure that it exists, otherwise log.
   if(attribute_location_list_.find(attribute) == attribute_location_list_.end())
-  {
-    LOG(LOG_ERROR) << "Could not find string attribute: " << attribute;
-  }
+  { LOG(LOG_ERROR) << "Could not find string attribute: " << attribute; }
 
   return attribute_location_list_[attribute];
 }
@@ -157,13 +155,11 @@ GLuint GLShaderProgram::GetAttribute(const std::string attribute)
  * Returns the uniform location, makes sure it can be found first,
  * and logs it.
  */
-GLuint GLShaderProgram::GetUniform(const std::string uniform)
+GLint GLShaderProgram::GetUniform(const std::string uniform)
 {
   //make sure that it exists, otherwise log.
   if(uniform_location_list_.find(uniform) == uniform_location_list_.end())
-  {
-    LOG(LOG_ERROR) << "Could not find string uniform: " << uniform;
-  }
+  { LOG(LOG_ERROR) << "Could not find string uniform: " << uniform; }
 
   return uniform_location_list_[uniform];
 }
@@ -171,14 +167,12 @@ GLuint GLShaderProgram::GetUniform(const std::string uniform)
 /*
  * Adds the attribute to the program, and returns a handle to its location.
  */
-GLuint GLShaderProgram::AddAttribute(const std::string attribute)
+GLint GLShaderProgram::AddAttribute(const std::string attribute)
 {
   attribute_location_list_[attribute] = glGetAttribLocation(program_id_,
                                                             attribute.c_str());
   if (attribute_location_list_[attribute] == -1)
-  {
-    LOG(LOG_ERROR) << "Could not locate " << attribute << " in shader";
-  }
+  { LOG(LOG_ERROR) << "Could not locate " << attribute << " in shader"; }
 
   return attribute_location_list_[attribute];
 }
@@ -186,14 +180,12 @@ GLuint GLShaderProgram::AddAttribute(const std::string attribute)
 /*
  * Adds the uniform to the program, and returns a handle to its location.
  */
-GLuint GLShaderProgram::AddUniform(const std::string uniform)
+GLint GLShaderProgram::AddUniform(const std::string uniform)
 {
   uniform_location_list_[uniform] = glGetUniformLocation(program_id_,
                                                          uniform.c_str());
   if (uniform_location_list_[uniform] == -1)
-  {
-    LOG(LOG_ERROR) << "Could not locate " << uniform << " in shader";
-  }
+  { LOG(LOG_ERROR) << "Could not locate " << uniform << " in shader"; }
 
   return uniform_location_list_[uniform];
 }

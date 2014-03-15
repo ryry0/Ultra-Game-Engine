@@ -45,11 +45,11 @@ class GLShaderProgram
     GLuint GetFragmentShader() const { return fragment_shader_id_; }
     GLuint GetVertexShader  () const { return vertex_shader_id_; }
     GLuint GetProgram       () const { return program_id_; }
-    GLuint GetAttribute     (const std::string attribute);
-    GLuint GetUniform       (const std::string uniform);
+    GLint GetAttribute      (const std::string attribute);
+    GLint GetUniform        (const std::string uniform);
 
-    GLuint AddAttribute     (const std::string attribute);
-    GLuint AddUniform       (const std::string uniform);
+    GLint AddAttribute      (const std::string attribute);
+    GLint AddUniform        (const std::string uniform);
 
     void operator()         () { BindProgram(); }
 
